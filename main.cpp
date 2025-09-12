@@ -3,15 +3,14 @@
 #include <random>
 #include <algorithm>
 #include <unordered_set>
-#include <unordered_map>
 #include <set>
 
 using namespace std;
 
-const int POPULATION_SIZE = 100;
-const int MAX_REPEATING_RESULT = 300;
-const int CRAZY_MUTATION_INITIAL_PERCENT = 2;
-const int CRAZY_MUTATION_MAXIMUM_PERCENT = 40;
+constexpr int POPULATION_SIZE = 100;
+constexpr int MAX_REPEATING_RESULT = 300;
+constexpr int CRAZY_MUTATION_INITIAL_PERCENT = 2;
+constexpr int CRAZY_MUTATION_MAXIMUM_PERCENT = 40;
 // const int REMOVE_WORST_PERCENT = 80;
 
 int crazy_mutation = CRAZY_MUTATION_INITIAL_PERCENT;
@@ -65,7 +64,7 @@ private:
         }
     }
 
-    bool rows_correct() {
+    bool rows_correct() const {
         for (const vector<int>& r : rows) {
             for (const int& elem : r) {
                 int elem_res = 0;

@@ -7,9 +7,9 @@
 Before applying the genetic algorithm, the model checks if there are any numbers whose positions are already obvious at the initial stage.
 
 1. Detecting if there is a cell with only one possible number to put in it.
-2. Detecting if there is only one possible cell in the square to put some digit.
-3. Detecting if there is only one possible cell in the row to put some digit.
-4. Detecting if there is only one possible cell in the column to put some digit.
+2. Detecting if there is only one possible cell in the **square** to put some digit.
+3. Detecting if there is only one possible cell in the **row** to put some digit.
+4. Detecting if there is only one possible cell in the **column** to put some digit.
 
 ## Genetic Algorithm
 
@@ -25,7 +25,8 @@ CRAZY_MUTATION_MAXIMUM_PERCENT = 40;
 
 The model creates the population of sudoku fields.
 
-For all initially empty cells, the model randomly chooses the digit to put in it from the list of allowed digits.
+1. The model creates `POPULATION_SIZE` sudoku fields with the initial digits in it.
+2. For all initially empty cells, the model randomly chooses the digit to put in it from the list of allowed digits.
 
 ### Make Children
 
@@ -42,7 +43,10 @@ The model removes the worst sudoku fileds.
 
 1. Measuring **fintenss function** of each field within the population: 
 $$
-\text{fitness} = \left( \sum_{\text{columns}} \sum_{k=1}^{9} (\text{count}_k - 1) \cdot \text{count}_k + \sum_{\text{grids}} \sum_{k=1}^{9} (\text{count}_k - 1) \cdot \text{count}_k \right)^2
+\text{fitness} = \left( 
+\sum_{\text{columns}} \sum_{k=1}^{9} (\text{count}_k - 1) \cdot \text{count}_k + 
+\sum_{\text{grids}} \sum_{k=1}^{9} (\text{count}_k - 1) \cdot \text{count}_k 
+\right)^2
 $$
 2. Remove the `POPULATION_SIZE / 2` worst entities (with the highest fitness function).
 

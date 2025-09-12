@@ -42,12 +42,8 @@ The model creates new entities of the sudoku fields.
 The model removes the worst sudoku fileds.
 
 1. Measuring **fintenss function** of each field within the population: 
-$$
-\text{fitness} = \left( 
-\sum_{\text{columns}} \sum_{k=1}^{9} (\text{count}_k - 1) \cdot \text{count}_k + 
-\sum_{\text{grids}} \sum_{k=1}^{9} (\text{count}_k - 1) \cdot \text{count}_k 
-\right)^2
-$$
+[fitness]
+![fitness](https://latex.codecogs.com/svg.latex?\text{fitness}=\left(\sum_{\text{columns}}\sum_{k=1}^{9}(\text{count}_k-1)\cdot\text{count}_k+\sum_{\text{grids}}\sum_{k=1}^{9}(\text{count}_k-1)\cdot\text{count}_k\right)^2)
 2. Remove the `POPULATION_SIZE / 2` worst entities (with the highest fitness function).
 
 ### Stochastic Processing

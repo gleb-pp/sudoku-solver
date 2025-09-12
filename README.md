@@ -1,6 +1,32 @@
 # Sudoku Solver
 
+This project implements a Sudoku solver based on a genetic algorithm. Instead of traditional backtracking, it uses evolutionary ideas: population, crossover, and mutations.
 
+#### Input
+```
+4 - - 6 - - 5 - -
+- - 2 - - 1 6 - -
+- 1 - - - - - - -
+- - 7 - - 6 - 1 8
+- - - - 8 4 - 5 3
+- 3 - 1 - - - - 6
+8 - 3 - - - - - 2
+1 - - - 2 8 3 7 4
+- - - - - - 1 - -
+```
+
+#### Output
+```
+4 8 9 6 7 2 5 3 1 
+7 5 2 8 3 1 6 4 9 
+3 1 6 5 4 9 8 2 7 
+5 4 7 3 9 6 2 1 8 
+6 9 1 2 8 4 7 5 3 
+2 3 8 1 5 7 4 9 6 
+8 7 3 4 1 5 9 6 2 
+1 6 5 9 2 8 3 7 4 
+9 2 4 7 6 3 1 8 5 
+```
 
 ## Preprocessing
 
@@ -33,16 +59,15 @@ The model creates the population of sudoku fields.
 The model creates new entities of the sudoku fields. 
 
 1. Shuffling the entire population.
-2. Construct new sudoku fileds (children) from two adjacent existing ones (parents): take odd rows from one parent and even rows from another.
+2. Construct new sudoku fields (children) from two adjacent existing ones (parents): take odd rows from one parent and even rows from another.
 3. Making **mutation** in the child: swapping two random non-initial numbers in the row.
 4. With probability `CRAZY_MUTATION_INITIAL_PERCENT` shuffle all non-initial numbers in the row.
 
 ### Remove Dregs
 
-The model removes the worst sudoku fileds.
+The model removes the worst sudoku fields.
 
-1. Measuring **fintenss function** of each field within the population: 
-[fitness]
+1. Measuring **fitness function** of each field within the population: 
 ![fitness](https://latex.codecogs.com/svg.latex?\text{fitness}=\left(\sum_{\text{columns}}\sum_{k=1}^{9}(\text{count}_k-1)\cdot\text{count}_k+\sum_{\text{grids}}\sum_{k=1}^{9}(\text{count}_k-1)\cdot\text{count}_k\right)^2)
 2. Remove the `POPULATION_SIZE / 2` worst entities (with the highest fitness function).
 
